@@ -10,6 +10,20 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
+    axios.get('/cryto')
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
 
   render () {
     return (
