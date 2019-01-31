@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/cryto', function (req, res) {
   console.log('serving get request...');
   axios.get('https://api.coindesk.com/v1/bpi/historical/close.json')
-  .then(res => {
-    console.log(res.data)
+  .then(results => {
+    res.send(results.data)
   })
   .catch(err => {
     console.log(err)
