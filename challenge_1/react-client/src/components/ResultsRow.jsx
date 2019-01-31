@@ -2,9 +2,9 @@ import React from 'react';
 
 const Row = ({row}) => (
   <div>
-      Date: {row.date}
+      {row.category2}  ({row.date})
       <br/>
-      Event: {row.description}
+      {row.description}
       <hr/>
   </div>
 )
