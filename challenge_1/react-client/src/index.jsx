@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import Results from './components/Results.jsx';
@@ -11,12 +12,11 @@ class App extends React.Component {
     this.state = { 
       searchTerm: '',
       page: 1,
+      pageCount: 0,
       data: undefined
     }
-  }
 
-  componentDidMount() {
-
+    this.handlePage = this.handlePage.bind(this);
   }
 
   handleChange(e) {
@@ -27,16 +27,29 @@ class App extends React.Component {
   }
 
   handleClick() {
-    axios(`http://localhost:3000/events?q=${this.state.searchTerm}&_page=${this.state.page}&_limit=10`)
+    this.search(this.state.searchTerm, this.state.page)
+  }
+
+  search(query, page) {
+    axios(`http://localhost:3000/events?q=${query}&_page=${page}&_limit=10`)
     .then(res => {
-      console.log(res.data);
+      // console.log(res.headers['x-total-count']);
       this.setState({
+        pageCount: Math.ceil(res.headers['x-total-count']/10),
         data: res.data
       })
     })
     .catch(err => {
       console.log(err);
     })
+  }
+
+  handlePage(e) {
+    let page = e.selected + 1;
+    this.setState({
+      page: page
+    })
+    this.search(this.state.searchTerm, page)
   }
 
   render () {
@@ -46,6 +59,11 @@ class App extends React.Component {
       <Search handleChange={this.handleChange.bind(this)} handleClick={this.handleClick.bind(this)}/>
       <br/>
       <Results data={this.state.data} />
+      <br/>
+      <ReactPaginate pageCount={this.state.pageCount} 
+        pageRangeDisplayed={5} 
+        marginPagesDisplayed={2} 
+        onPageChange={this.handlePage} />
     </div>
     )
   }

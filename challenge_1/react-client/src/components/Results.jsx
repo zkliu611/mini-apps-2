@@ -18,6 +18,5 @@ const Results = ({data}) => {
     return <div></div>
   }
 }
-  
 
 export default Results;
