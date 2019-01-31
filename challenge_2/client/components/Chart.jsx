@@ -1,11 +1,9 @@
 import React from 'react';
 
-
 const Charts = ({date, data}) => {
   if (date && data) {
     date.unshift('x')
     data.unshift('bitcoin price $USD')
-    console.log(date, data)
     var chart = c3.generate({
       bindto: '#chart',
       data: {
