@@ -5,13 +5,7 @@ const Results = ({data}) => {
   if (data) {
     return (
       <div>
-        <table >
-          <tr>
-            <td>Date</td>
-            <td>Description</td>
-          </tr>
-          {data.map((data) => <ResultsRow row={data}/>)}
-        </table>
+        {data.map((data) => <ResultsRow row={data}/>)}
       </div>
     )
   } else {

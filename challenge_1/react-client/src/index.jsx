@@ -33,7 +33,7 @@ class App extends React.Component {
   search(query, page) {
     axios(`http://localhost:3000/events?q=${query}&_page=${page}&_limit=10`)
     .then(res => {
-      // console.log(res.headers['x-total-count']);
+      // console.log(res.headers);
       this.setState({
         pageCount: Math.ceil(res.headers['x-total-count']/10),
         data: res.data
@@ -63,7 +63,14 @@ class App extends React.Component {
       <ReactPaginate pageCount={this.state.pageCount} 
         pageRangeDisplayed={5} 
         marginPagesDisplayed={2} 
-        onPageChange={this.handlePage} />
+        onPageChange={this.handlePage}
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'} />
     </div>
     )
   }
