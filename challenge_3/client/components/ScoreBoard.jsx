@@ -20,28 +20,30 @@ const ScoreBoard = ({score}) => {
           <th >Score</th>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+
+          <td>{score[0][0]}</td>
+          <td>{score[0][1]}</td>
+          <td>{score[1][0]}</td>
+          <td>{score[1][1]}</td>
+          <td>{score[2][0]}</td>
+          <td>{score[2][1]}</td>
+          <td>{score[3][0]}</td>
+          <td>{score[3][1]}</td>
+          <td>{score[4][0]}</td>
+          <td>{score[4][1]}</td>
+          <td>{score[5][0]}</td>
+          <td>{score[5][1]}</td>
+          <td>{score[6][0]}</td>
+          <td>{score[6][1]}</td>
+          <td>{score[7][0]}</td>
+          <td>{score[7][1]}</td>
+          <td>{score[8][0]}</td>
+          <td>{score[8][1]}</td>
+          <td>{score[9][0]}</td>
+          <td>{score[9][1]}</td>
+          <td>{score[9][2]}</td>
+          <td rowSpan="2"></td>
+    
         </tr>
         <tr>
           <td colSpan="2"></td>
@@ -54,7 +56,7 @@ const ScoreBoard = ({score}) => {
           <td colSpan="2"></td>
           <td colSpan="2"></td>
           <td colSpan="3"></td>
-          <td colSpan="2"></td>
+          {/* <td rowSpan="2"></td> */}
         </tr>
   
      

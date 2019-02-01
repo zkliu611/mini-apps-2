@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ScorePad from './components/ScorePad.jsx';
 import ScoreBoard from './components/ScoreBoard.jsx';
+import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class App extends React.Component {
       round: 1,
       ball: 1, 
       knockDown: 0,
-      record: [],
+      record: [['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['',''],['','','']],
       end: false
     }
   }
@@ -21,7 +22,7 @@ class App extends React.Component {
     let ball = this.state.ball;
     let record = this.state.record;
     if (round === 10 && ball === 1 && knockDown === 10) {
-      record.push(['X']);
+      record[9][0] = 'X';
       this.setState({
         knockDown: 0,
         ball: 2,
@@ -29,28 +30,38 @@ class App extends React.Component {
         round: 10
       })
     } else if (round === 10 && ball === 2 && knockDown === 10) {
-      record[9].push('X');
+      record[9][1] = 'X';
       this.setState({
         knockDown: 0,
         ball: 3,
         round: 10
       })
     } else if (round === 10 && ball === 2 && (this.state.knockDown + knockDown) === 10) {
-      record[9].push('S');
+      record[9][1] = 'S';
       this.setState({
         knockDown: 0,
         ball: 3,
         round: 10
       })
     } else if (round === 10 && ball === 3) {
-      record[9].push(knockDown);
+      if (record[9][1] === 'X' & knockDown === 10){
+        record[9][2] = 'X';
+      } else {
+        record[9][2] = knockDown;
+      }
+      this.setState({
+        record: record,
+        end: true
+      })
+    } else if (round === 10 && ball === 2 && (this.state.knockDown + knockDown) < 10) {
+      record[round - 1] = [this.state.knockDown, knockDown, ''];
       this.setState({
         record: record,
         end: true
       })
     } else if (knockDown === 10) {
+      record[round -1] = ['-', 'X'];
       round++;
-      record.push(['X'])
       this.setState({
         round: round,
         knockDown: 0,
@@ -58,16 +69,16 @@ class App extends React.Component {
         record: record
       })
     } else if (ball === 2 && (knockDown + this.state.knockDown) === 10) {
+      record[round - 1] = [knockDown, 'S'];
       round++;
-      record.push([this.state.knockDown, 'S'])
       this.setState({
         round: round,
         knockDown: 0,
         ball: 1
       })
     } else if (ball === 2) {
+      record[round -1] = [this.state.knockDown, knockDown];
       round++;
-      record.push([this.state.knockDown, knockDown])
       this.setState({
         ball: 1,
         knockDown: 0,
@@ -82,15 +93,22 @@ class App extends React.Component {
   }
 
   newGame() {
-
+    this.setState({
+      round: 1,
+      ball: 1, 
+      knockDown: 0,
+      record: [],
+      end: false
+    })
   }
 
   render () {
-    console.log(this.state)
+    console.log(this.state.record)
     return (
     <div>
       <h1>Bowling Score Chart</h1>
-      <ScorePad knockDown={this.state.knockDown} handleClick={this.handleClick.bind(this)} />
+      <ScorePad knockDown={this.state.knockDown} handleClick={this.handleClick.bind(this)} 
+        end={this.state.end} newGame={this.newGame.bind(this)} />
       <br/>
       <ScoreBoard score={this.state.record} />
     </div>
