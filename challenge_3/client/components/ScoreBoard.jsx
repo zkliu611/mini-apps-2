@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScoreBoard = ({score}) => {
+const ScoreBoard = ({record, score}) => {
   return (
     <div>
       <h3>ScoreBoard</h3>
@@ -21,42 +21,41 @@ const ScoreBoard = ({score}) => {
         </tr>
         <tr>
 
-          <td>{score[0][0]}</td>
-          <td>{score[0][1]}</td>
-          <td>{score[1][0]}</td>
-          <td>{score[1][1]}</td>
-          <td>{score[2][0]}</td>
-          <td>{score[2][1]}</td>
-          <td>{score[3][0]}</td>
-          <td>{score[3][1]}</td>
-          <td>{score[4][0]}</td>
-          <td>{score[4][1]}</td>
-          <td>{score[5][0]}</td>
-          <td>{score[5][1]}</td>
-          <td>{score[6][0]}</td>
-          <td>{score[6][1]}</td>
-          <td>{score[7][0]}</td>
-          <td>{score[7][1]}</td>
-          <td>{score[8][0]}</td>
-          <td>{score[8][1]}</td>
-          <td>{score[9][0]}</td>
-          <td>{score[9][1]}</td>
-          <td>{score[9][2]}</td>
-          <td rowSpan="2"></td>
+          <td>{record[0][0]}</td>
+          <td>{record[0][1]}</td>
+          <td>{record[1][0]}</td>
+          <td>{record[1][1]}</td>
+          <td>{record[2][0]}</td>
+          <td>{record[2][1]}</td>
+          <td>{record[3][0]}</td>
+          <td>{record[3][1]}</td>
+          <td>{record[4][0]}</td>
+          <td>{record[4][1]}</td>
+          <td>{record[5][0]}</td>
+          <td>{record[5][1]}</td>
+          <td>{record[6][0]}</td>
+          <td>{record[6][1]}</td>
+          <td>{record[7][0]}</td>
+          <td>{record[7][1]}</td>
+          <td>{record[8][0]}</td>
+          <td>{record[8][1]}</td>
+          <td>{record[9][0]}</td>
+          <td>{record[9][1]}</td>
+          <td>{record[9][2]}</td>
+          <td rowSpan="2">{score[10]}</td>
     
         </tr>
         <tr>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="2"></td>
-          <td colSpan="3"></td>
-          {/* <td rowSpan="2"></td> */}
+          <td colSpan="2">{score[0]}</td>
+          <td colSpan="2">{score[1]}</td>
+          <td colSpan="2">{score[2]}</td>
+          <td colSpan="2">{score[3]}</td>
+          <td colSpan="2">{score[4]}</td>
+          <td colSpan="2">{score[5]}</td>
+          <td colSpan="2">{score[6]}</td>
+          <td colSpan="2">{score[7]}</td>
+          <td colSpan="2">{score[8]}</td>
+          <td colSpan="3">{score[9]}</td>
         </tr>
   
      

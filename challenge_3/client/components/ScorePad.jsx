@@ -3,7 +3,7 @@ import ScoreBtn from './ScoreBtn.jsx'
 
 const ScorePad = ({knockDown, handleClick, end, newGame}) => {
   let btn = [];
-  for (let i = 1; i <= 10 - knockDown; i++){
+  for (let i = 0; i <= 10 - knockDown; i++){
     btn.push(i);
   }
   if (!end){
