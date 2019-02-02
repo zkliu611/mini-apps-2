@@ -24,7 +24,7 @@ class App extends React.Component {
     let record = this.state.record;
     if (round === 10 && ball === 1 && knockDown === 10) {
       record[9][0] = 'X';
-      this.calculateScore(record, round);
+      // this.calculateScore(record, round);
       this.setState({
         knockDown: 0,
         ball: 2,
@@ -33,7 +33,7 @@ class App extends React.Component {
       })
     } else if (round === 10 && ball === 2 && knockDown === 10) {
       record[9][1] = 'X';
-      this.calculateScore(record, round);
+      // this.calculateScore(record, round);
       this.setState({
         knockDown: 0,
         ball: 3,
@@ -42,7 +42,7 @@ class App extends React.Component {
     } else if (round === 10 && ball === 2 && (this.state.knockDown + knockDown) === 10) {
       record[9][0] = this.state.knockDown
       record[9][1] = '/';
-      this.calculateScore(record, round);
+      // this.calculateScore(record, round);
       this.setState({
         knockDown: 0,
         ball: 3,
@@ -122,6 +122,7 @@ class App extends React.Component {
   }
 
   calculateScore(record, round) {
+    console.log('calculating...', round, record)
     let score = this.state.score;
     let sum = this.state.score[10];
     if (round < 10) {
@@ -178,13 +179,10 @@ class App extends React.Component {
       } else if (record[9][0] === 'X' && record[9][1] === 'X' && record[9][2] === 'X') {
         console.log('xxx')
         score[9] = score[10] = score[10] + 30;
-      } else if (record[9][0] === 'X' && record[9][2] === '/') {
-        console.log('x/')
-        score[9] = score[10] = score[10] + 20;
-      } else if (record[9][0] === 'X' && typeof record[9][1] === 'number' && record[9][2] === 'X') {
-        console.log('xnx')
-        score[9] = score[10] = score[10] + 20;
-      } else if (record[9][0] === 'X' && typeof record[9][1] === 'number' && record[9][2] === 'number') {
+      } else if (record[9][0] === 'X' && record[9][1] === 'X' && typeof record[9][2] === 'number') {
+        console.log('xxn')
+        score[9] = score[10] = score[10] + 20 + record[9][2];
+      } else if (record[9][0] === 'X' && typeof record[9][1] === 'number' && typeof record[9][2] === 'number') {
         console.log('xnn')
         score[9] = score[10] = score[10] + record[9][1] + record[9][2];
       }
