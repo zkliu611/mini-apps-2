@@ -24,7 +24,6 @@ class App extends React.Component {
     let record = this.state.record;
     if (round === 10 && ball === 1 && knockDown === 10) {
       record[9][0] = 'X';
-      // this.calculateScore(record, round);
       this.setState({
         knockDown: 0,
         ball: 2,
@@ -33,7 +32,6 @@ class App extends React.Component {
       })
     } else if (round === 10 && ball === 2 && knockDown === 10) {
       record[9][1] = 'X';
-      // this.calculateScore(record, round);
       this.setState({
         knockDown: 0,
         ball: 3,
@@ -42,7 +40,6 @@ class App extends React.Component {
     } else if (round === 10 && ball === 2 && (this.state.knockDown + knockDown) === 10) {
       record[9][0] = this.state.knockDown
       record[9][1] = '/';
-      // this.calculateScore(record, round);
       this.setState({
         knockDown: 0,
         ball: 3,
@@ -141,7 +138,7 @@ class App extends React.Component {
           score[round - 1] = score[10] = record[round - 1][0] + record[round - 1][1] + sum;
         } else if (record[round-2][1] === '/' && record[round-1][1] === 'X') {
           score[round - 2] = score[10] = 20 + sum;
-        } else if (record[round-2][1] === '/' && typeof record[round-1][1] === 'number') {
+        } else if (record[round-2][1] === '/' && typeof record[round-1][0] === 'number') {
           score[round - 2] = score[10] = sum = 10 + record[round-1][0] + sum;
         }
       }
