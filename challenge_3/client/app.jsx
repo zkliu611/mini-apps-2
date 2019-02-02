@@ -141,7 +141,7 @@ class App extends React.Component {
           score[round - 1] = score[10] = record[round - 1][0] + record[round - 1][1] + sum;
         } else if (record[round-2][1] === '/' && record[round-1][1] === 'X') {
           score[round - 2] = score[10] = 20 + sum;
-        } else if (record[round-2][1] === '/' && record[round-1][1] !== 'X') {
+        } else if (record[round-2][1] === '/' && typeof record[round-1][1] === 'number') {
           score[round - 2] = score[10] = sum = 10 + record[round-1][0] + sum;
         }
       }
