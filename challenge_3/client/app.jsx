@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ScorePad from './components/ScorePad.jsx';
 import ScoreBoard from './components/ScoreBoard.jsx';
-import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
